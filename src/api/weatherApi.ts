@@ -41,8 +41,6 @@
 //   }
 // };
 
-"use strict";
-
 import { GeocoderResponse } from "../types/geocoderResponseType";
 import { WeatherResponse } from "../types/weatherResponseType";
 // import fs from 'browserify-fs';
@@ -89,14 +87,14 @@ async function getAddressLocation(text: string) {
   const json: GeocoderResponse = await res.json();
 
   // 住所情報を取得する
-  if (json.Feature && json.Feature.length != 0) {
+  if (json.Feature && json.Feature.length !== 0) {
     // ヒットした1つめの住所を使う
     let name = json.Feature[0].Name;
     let ll = json.Feature[0].Geometry.Coordinates.split(",");
     let bbox = json.Feature[0].Geometry.BoundingBox;
     return { address: name, lat: ll[1], lon: ll[0], bbox: bbox };
   } else {
-    throw "住所にヒットしなかった";
+    throw new Error("住所にヒットしませんでした");
   }
 }
 
