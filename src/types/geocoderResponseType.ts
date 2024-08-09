@@ -1,3 +1,6 @@
+/**
+ * YahooジオコーダAPI取得レスポンス
+ */
 export interface GeocoderResponse {
   ResultInfo: ResultInfo;
   Feature: Feature[];

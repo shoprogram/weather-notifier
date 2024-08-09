@@ -1,3 +1,6 @@
+/**
+ * Yahoo気象情報API取得レスポンス
+ */
 export interface WeatherResponse {
   ResultInfo: ResultInfo;
   Feature: WeatherFeature[];
