@@ -1,0 +1,33 @@
+{
+    "ResultInfo": {
+      "Count": 1,
+      "Total": 1,
+      "Start": 1,
+      "Status": 200,
+      "Latency": 123,
+      "Description": "Yahoo Geocoder API Sample Response",
+      "Copyright": "(C) Yahoo Japan Corporation"
+    },
+    "Feature": [
+      {
+        "Id": "1",
+        "Name": "東京都千代田区千代田1-1",
+        "Geometry": {
+          "Type": "point",
+          "Coordinates": "139.753595,35.684451",
+          "BoundingBox": "139.752000,35.683000 139.755000,35.685000"
+        },
+        "Category": ["place", "city"],
+        "Description": "皇居周辺の位置",
+        "Style": {
+          "LineStyle": {
+            "color": "#FF0000"
+          },
+          "PolygonStyle": {
+            "color": "#00FF00"
+          }
+        }
+      }
+    ]
+  }
+  

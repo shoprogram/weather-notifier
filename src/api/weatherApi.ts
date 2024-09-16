@@ -1,5 +1,6 @@
 import { GeocoderResponse } from "../types/geocoderResponseType";
 import { WeatherResponse } from "../types/weatherResponseType";
+import geocoderMock from "../mock/geocode-sample.json"
 
 // アプリケーションID
 const APPID = process.env.REACT_APP_YAHOO_API_KEY!;
@@ -13,22 +14,24 @@ type Location = {
 
 // テキストにマッチした住所情報を取得する
 async function getAddressLocation(text: string) {
-  const params = new URLSearchParams({
-    appid: APPID,
-    query: text,
-    al: "2",
-    exclude_seireishi: "false",
-    results: "1",
-    output: "json",
-  }).toString();
-  const url = "/api/geocode/V1/geoCoder?" + params;
+  // const params = new URLSearchParams({
+  //   appid: APPID,
+  //   query: text,
+  //   al: "2",
+  //   exclude_seireishi: "false",
+  //   results: "1",
+  //   output: "json",
+  // }).toString();
+  // const url = "/api/geocode/V1/geoCoder?" + params;
 
   // Yahoo!ジオコーダAPIをコールする
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
-  }
-  const json: GeocoderResponse = await res.json();
+  // const res = await fetch(url);
+  // if (!res.ok) {
+  //   throw new Error(`HTTP error! status: ${res.status}`);
+  // }
+  // TODO 外部API取得の実装で詰まっているため、一次的にmockを使用
+  const json: GeocoderResponse = geocoderMock;
+  // const json: GeocoderResponse = await res.json();
 
   // 住所情報を取得する
   if (json.Feature && json.Feature.length !== 0) {
@@ -115,6 +118,7 @@ export async function getWeather() {
 
     // 住所情報を取得
     const location = await getAddressLocation(text);
+    console.log(location)
 
     // 降水情報を取得
     const weather = await getWeatherInfo(location);
